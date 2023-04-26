@@ -1,6 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { defineCERoot } from '@bc-standards/vue-ce'
+import App from './App.ce.vue'
 
-import './assets/main.css'
+export default defineCERoot(App)
 
-createApp(App).mount('#app')

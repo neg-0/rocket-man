@@ -1,6 +1,6 @@
-import { fileURLToPath, URL } from 'node:url';
-
 import vue from '@vitejs/plugin-vue';
+import path from 'node:path';
+import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
 export default ({ mode }) => ({
@@ -13,7 +13,7 @@ export default ({ mode }) => ({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
-    // dedupe: ['vue']
+    dedupe: ['vue']
   },
   // server: {
   //   host: "0.0.0.0",
@@ -22,14 +22,14 @@ export default ({ mode }) => ({
   //     '^/api/.*': process.env.DEV_BACKEND_URL,
   //   }
   // },
-  // build: {
-  //   lib: {
-  //     formats: ['es'],
-  //     entry: path.resolve(__dirname, 'src/main.js'),
-  //     name: 'plugin-twp-cam',
-  //     fileName: 'dynamic-component',
-  //   }
-  // },
+  build: {
+    lib: {
+      formats: ['es'],
+      entry: path.resolve(__dirname, 'src/main.js'),
+      name: 'plugin-twp-cam',
+      fileName: 'dynamic-component',
+    }
+  },
   define: {
     'process.env.NODE_ENV': JSON.stringify(mode)
   }

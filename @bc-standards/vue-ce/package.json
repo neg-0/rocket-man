@@ -1,0 +1,29 @@
+{
+  "name": "@bc-standards/vue-ce",
+  "version": "1.0.0",
+  "description": "Custom Element Utility Library for Vue 3",
+  "type": "module",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsc && rollup -c"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "vue": ">=3.2.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.0",
+    "rollup": "^2.66.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.5"
+  },
+  "publishConfig": {
+    "registry": "https://gitlab.phactory.beast-code.com/api/v4/projects/551/packages/npm/"
+  }
+}

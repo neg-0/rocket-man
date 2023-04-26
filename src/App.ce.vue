@@ -1,4 +1,5 @@
 <script setup>
+import './assets/main.css'
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 </script>
@@ -17,7 +18,7 @@ import TheWelcome from './components/TheWelcome.vue'
   </main>
 </template>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
 }
