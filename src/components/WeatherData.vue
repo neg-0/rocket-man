@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import weatherDataJSON from "./weather.json";
 
-const weatherAPI = "http://localhost:3000/weather";
+// const weatherAPI = "http://localhost:3000/weather";
 
 const towersIds = {
   Tower_0003_eiffel: "0003",
@@ -10,37 +10,42 @@ const towersIds = {
   "Tower_0303_eiffel.001": "0303",
 };
 
+const weatherData = ref([]);
 const props = defineProps({
   partId: String,
 });
 
-const towerId = towersIds[props.partId];
-const weatherData = ref([]);
+watch(
+  () => props.partId,
+  () => {
+    const towerId = towersIds[props.partId];
 
-// Collect every weatherDataJSON with the secified tower and sort by HGT
-weatherData.value = weatherDataJSON
-  .filter((data) => data.TOWER === towerId)
-  .sort((a, b) => b.HGT - a.HGT)
-  // Remove LAT, LON, AVG
-  .map((data) => {
-    const { LAT, LON, AVG, TOWER, AV, DIF, ...rest } = data;
-    return rest;
-  })
-  // Remove any field that contains no value across all data
-  .map((data) => {
-    const newData = {};
-    Object.keys(data).forEach((key) => {
-      if (data[key] !== "") {
-        newData[key] = data[key];
-      }
-    });
-    return newData;
-  })
-  // Rename PREVAILING to PREV
-  .map((data) => {
-    const { PREVAILING, ...rest } = data;
-    return { PREV: PREVAILING, ...rest };
-  });
+    // Collect every weatherDataJSON with the secified tower and sort by HGT
+    weatherData.value = weatherDataJSON
+      .filter((data) => data.TOWER === towerId)
+      .sort((a, b) => b.HGT - a.HGT)
+      // Remove LAT, LON, AVG
+      .map((data) => {
+        const { LAT, LON, AVG, TOWER, AV, DIF, ...rest } = data;
+        return rest;
+      })
+      // Remove any field that contains no value across all data
+      .map((data) => {
+        const newData = {};
+        Object.keys(data).forEach((key) => {
+          if (data[key] !== "") {
+            newData[key] = data[key];
+          }
+        });
+        return newData;
+      })
+      // Rename PREVAILING to PREV
+      .map((data) => {
+        const { PREVAILING, ...rest } = data;
+        return { PREV: PREVAILING, ...rest };
+      });
+  }
+);
 </script>
 
 <template>
