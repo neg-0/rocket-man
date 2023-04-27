@@ -21,7 +21,6 @@ console.log(props.partId);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
   /* background-image: url('https://i0.wp.com/stationproject.blog/wp-content/uploads/2012/08/weather-station-18.jpg?ssl=1'); */
   /* background-size: cover; */
@@ -32,6 +31,12 @@ console.log(props.partId);
 h2,
 h5 {
   color: var(--pal-v1-status-e-200);
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 table {
