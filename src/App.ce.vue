@@ -29,6 +29,7 @@ const props = defineProps({
 h2,
 h5 {
   color: var(--pal-v1-status-e-200);
+  margin-block: 12px;
 }
 
 .table-wrapper {
