@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@bc-standards/vue-ce": "file:@bc-standards/vue-ce",
+    "papaparse": "^5.4.1",
     "vue": "^3.2.47"
   },
   "devDependencies": {
