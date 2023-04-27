@@ -35,7 +35,12 @@ h5 {
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
-  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.table-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 table {
