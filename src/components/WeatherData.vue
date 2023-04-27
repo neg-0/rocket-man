@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 import weatherDataJSON from "./weather.json";
 
 // const weatherAPI = "http://localhost:3000/weather";
@@ -10,19 +10,22 @@ const towersIds = {
   "Tower_0303_eiffel.001": "0303",
 };
 
-const weatherData = ref([]);
+const weatherData = ref([{ TOWER: "0", Status: "Loading..." }]);
+const towerId = ref("0");
 const props = defineProps({
   partId: String,
 });
 
+console.log("weatherData", weatherData.value);
+
 watch(
   () => props.partId,
   () => {
-    const towerId = towersIds[props.partId];
+    towerId.value = towersIds[props.partId];
 
     // Collect every weatherDataJSON with the secified tower and sort by HGT
     weatherData.value = weatherDataJSON
-      .filter((data) => data.TOWER === towerId)
+      .filter((data) => data.TOWER === towerId.value)
       .sort((a, b) => b.HGT - a.HGT)
       // Remove LAT, LON, AVG
       .map((data) => {
@@ -44,8 +47,16 @@ watch(
         const { PREVAILING, ...rest } = data;
         return { PREV: PREVAILING, ...rest };
       });
-  }
+  },
+  { immediate: true }
 );
+
+const weatherObjKeys = computed(() => {
+  if (weatherData.value.length > 0) {
+    return Object.keys(weatherData.value[0]);
+  }
+  return [];
+});
 </script>
 
 <template>
@@ -56,7 +67,7 @@ watch(
       <table>
         <thead>
           <tr>
-            <th v-for="key in Object.keys(weatherData[0])" :key="key">
+            <th v-for="key in weatherObjKeys" :key="key">
               {{ key }}
             </th>
           </tr>
