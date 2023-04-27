@@ -23,7 +23,7 @@ weatherData.value = weatherDataJSON
   .sort((a, b) => b.HGT - a.HGT)
   // Remove LAT, LON, AVG
   .map((data) => {
-    const { LAT, LON, AVG, TOWER, AV, ...rest } = data;
+    const { LAT, LON, AVG, TOWER, AV, DIF, ...rest } = data;
     return rest;
   })
   // Remove any field that contains no value across all data
@@ -35,6 +35,11 @@ weatherData.value = weatherDataJSON
       }
     });
     return newData;
+  })
+  // Rename PREVAILING to PREV
+  .map((data) => {
+    const { PREVAILING, ...rest } = data;
+    return { PREV: PREVAILING, ...rest };
   });
 </script>
 
@@ -42,22 +47,25 @@ weatherData.value = weatherDataJSON
   <div class="wrapper">
     <h2>WINDS Data</h2>
     <h5>Tower: {{ towerId }}</h5>
-    <!-- A table of wind tower data with the HGT value on the left and the rest of the data following, with headers on top -->
-    <table>
-      <thead>
-        <tr>
-          <th v-for="key in Object.keys(weatherData[0])" :key="key">
-            {{ key }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- // Iterate through each value of the weatherData array -->
-        <tr v-for="data in weatherData" :key="data.HGT">
-          <!-- // Iterate through each value of the data object -->
-          <td v-for="value in Object.values(data)" :key="value">{{ value }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th v-for="key in Object.keys(weatherData[0])" :key="key">
+              {{ key }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- // Iterate through each value of the weatherData array -->
+          <tr v-for="data in weatherData" :key="data.HGT">
+            <!-- // Iterate through each value of the data object -->
+            <td v-for="value in Object.values(data)" :key="value">
+              {{ value }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
