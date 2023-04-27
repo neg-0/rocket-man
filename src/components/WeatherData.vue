@@ -16,8 +16,6 @@ const props = defineProps({
   partId: String,
 });
 
-console.log("weatherData", weatherData.value);
-
 watch(
   () => props.partId,
   () => {
