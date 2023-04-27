@@ -5,8 +5,6 @@ import WeatherData from "./components/WeatherData.vue";
 const props = defineProps({
   partId: String,
 });
-
-console.log(props.partId);
 </script>
 
 <template>
