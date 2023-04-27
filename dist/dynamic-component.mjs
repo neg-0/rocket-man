@@ -6807,7 +6807,7 @@ const qs = [
       ])
     ]));
   }
-}, Zs = `.wrapper{display:flex;flex-direction:column;align-items:center;height:100vh;background-color:#000}.wrapper h1,h2,h5{color:var(--pal-v1-status-e-200);margin-block:12px}.table-wrapper{width:100%;overflow-x:auto;scrollbar-width:none}table{width:100%;border:1px solid var(--pal-v1-neutrals-300);font-size:.75rem;border-collapse:collapse;color:#fff}table thead{background-color:var(--pal-v1-status-e-200)}table tr{border-top:1px solid var(--pal-v1-text-600);transition:all ease-in-out .1s}table th{text-align:left;padding:.5rem}table td{padding:.5rem}table tr:hover{background-color:var(--pal-v1-accent-500)}
+}, Zs = `.wrapper{display:flex;flex-direction:column;align-items:center;height:100vh;background-color:#000}.wrapper h1,h2,h5{color:var(--pal-v1-status-e-200);margin-block:12px}.table-wrapper{width:100%;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}.table-wrapper::-webkit-scrollbar{display:none}table{width:100%;border:1px solid var(--pal-v1-neutrals-300);font-size:.75rem;border-collapse:collapse;color:#fff}table thead{background-color:var(--pal-v1-status-e-200)}table tr{border-top:1px solid var(--pal-v1-text-600);transition:all ease-in-out .1s}table th{text-align:left;padding:.5rem}table td{padding:.5rem}table tr:hover{background-color:var(--pal-v1-accent-500)}
 `, Qs = (e, t) => {
   const I = e.__vccOpts || e;
   for (const [n, A] of t)
