@@ -1,6 +1,6 @@
 <script setup>
 import "./assets/main.css";
-import WeatherData from "./components/WeatherData.vue";
+import AssetView from "./components/AssetView.vue";
 
 const props = defineProps({
   partId: String,
@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <main>
-    <WeatherData :partId="props.partId" />
+    <AssetView :partId="props.partId" />
   </main>
 </template>
 
@@ -32,40 +32,56 @@ h5 {
   margin-block: 12px;
 }
 
-.table-wrapper {
+/* Add breakpoints and wrapping to the grid */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 1rem;
   width: 100%;
-  overflow-x: auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-.table-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-table {
-  width: 100%;
-  border: 1px solid var(--pal-v1-neutrals-300);
-  font-size: 0.75rem;
-  border-collapse: collapse;
-  color: white;
-}
-table thead {
+.asset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: var(--pal-v1-status-e-200);
-}
-table tr {
-  border-top: 1px solid var(--pal-v1-text-600);
+  border-radius: 8px;
+  padding: 1rem;
   transition: all ease-in-out 100ms;
-}
-table th {
-  text-align: left;
-  padding: 0.5rem;
-}
-table td {
-  padding: 0.5rem;
+  height: 120px;
 }
 
-table tr:hover {
+.asset:hover {
   background-color: var(--pal-v1-accent-500);
+}
+
+.asset-icon {
+  max-height: 100px;
+  max-width: 100px;
+  height: auto;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+
+.asset-label {
+  text-align: center;
+}
+
+.asset-label p {
+  margin-block: 0;
+}
+
+.asset-label p:first-child {
+  font-weight: bold;
 }
 </style>

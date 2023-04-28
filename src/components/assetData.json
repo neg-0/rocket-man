@@ -1,41 +1,55 @@
 [
   {
+    "id": "1",
     "location": "Hangar X",
     "type": "Falcon 9 Booster",
     "label": "Booster 1067",
     "mission": "USSF-123"
   },
   {
+    "id": "2",
     "location": "Hangar X",
     "type": "Falcon 9 Booster",
     "label": "Booster 1023",
     "mission": "USSF-123"
   },
   {
+    "id": "10",
+    "location": "Hangar X",
+    "type": "Falcon 9 PLF",
+    "label": "PLF 999",
+    "mission": "USSF-123"
+  },
+  {
+    "id": "3",
     "location": "SLC-37",
     "type": "Delta IV Heavy",
     "label": "Delta IV Heavy",
     "mission": "NROL-123"
   },
   {
+    "id": "4",
     "location": "SLC-41",
     "type": "Falcon 9",
     "label": "Falcon 9",
     "mission": "Starlink 1-2"
   },
   {
+    "id": "5",
     "location": "Hangar X",
     "type": "Falcon 9 Booster",
     "label": "Booster 1051",
     "mission": "USSF-999"
   },
   {
+    "id": "6",
     "location": "ASOC",
     "type": "Atlas Booster",
     "label": "Atlas V CBC",
     "mission": "CFT"
   },
   {
+    "id": "7",
     "location": "Astrotech",
     "type": "Atlas PLF",
     "label": "Atlas PLF",

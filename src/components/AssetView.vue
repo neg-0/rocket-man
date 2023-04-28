@@ -17,11 +17,12 @@ const locationIds = {
 }
 
 const assetIcons = {
-  "Falcon 9 Booster": "../assets/Falcon9Booster.png",
-  "Atlas Booster": "../assets/AtlasBooster.png",
-  "Delta IV Heavy": "../assets/DeltaIVHeavy.png",
-  "Falcon 9": "../assets/Falcon9.png",
-  "Atlas PLF": "../assets/AtlasPLF.png"
+  "Falcon 9 Booster": "assets/falcon9booster.png",
+  "Atlas Booster": "assets/atlasbooster.png",
+  "Delta IV Heavy": "assets/deltaIVheavy.png",
+  "Falcon 9": "assets/falcon9.png",
+  "Falcon 9 PLF": "assets/falcon9PLF.png",
+  "Atlas PLF": "assets/atlasPLF.png"
 }
 const props = defineProps({
   partId: String,
@@ -33,7 +34,7 @@ watch(
     locationId.value = locationIds[props.partId];
 
     // Collect every assetDataJSON with the secified location
-    assetData.value = assetDataJSON
+    assetData.value = assetJson
       .filter((data) => data.location === locationId.value)
   },
   { immediate: true }
@@ -51,8 +52,17 @@ const weatherObjKeys = computed(() => {
   <div class="wrapper">
     <h2>Asset Data</h2>
     <h5>Location: {{ locationId }}</h5>
-    <div class="table-wrapper">
-      <!-- Render a grid of asset icons, the asset label, and mission -->
+    <!-- Render a grid of asset icons, the asset label, and mission -->
+    <div class="asset-grid">
+      <div v-for="asset in assetData" :key="asset.id" class="asset">
+        <div class="icon-wrapper">
+          <img :src="assetIcons[asset.type]" :alt="asset.type" class="asset-icon" />
+        </div>
+        <div class="asset-label">
+          <p>{{ asset.label }}</p>
+          <p>{{ asset.mission }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
