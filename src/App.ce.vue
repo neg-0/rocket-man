@@ -38,8 +38,7 @@ h5 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 1rem;
-  width: 100%;
-  max-width: 800px;
+  width: 90%;
   margin: 0 auto;
   padding: 1rem;
 }
