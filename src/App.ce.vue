@@ -23,6 +23,7 @@ const props = defineProps({
   /* background-image: url('https://i0.wp.com/stationproject.blog/wp-content/uploads/2012/08/weather-station-18.jpg?ssl=1'); */
   /* background-size: cover; */
   background-color: black;
+  font-family: 'Roboto', sans-serif;
 }
 
 .wrapper h1,
