@@ -4,12 +4,13 @@ import AssetView from "./components/AssetView.vue";
 
 const props = defineProps({
   partId: String,
+  proxy: String
 });
 </script>
 
 <template>
   <main>
-    <AssetView :partId="props.partId" />
+    <AssetView :partId="props.partId" :proxy="props.proxy" />
   </main>
 </template>
 

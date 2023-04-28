@@ -5,27 +5,27 @@ import assetJson from './assetData.json';
 const assetData = ref(assetJson);
 const locationId = ref("0");
 const locationIds = {
-  "ASOC": "ASOC",
-  "Astrotech": "Astrotech",
-  "DOC": "DOC",
-  "Hangar X": "Hangar X",
-  "SLC-37": "SLC-37",
-  "SLC-39A": "SLC-39A",
-  "SLC-39B": "SLC-39B",
-  "SLC-40": "SLC-40",
-  "SLC-41": "SLC-41"
+  "LC_40_Hangar_Cube.007": "PPF",
+  "Launch_Site_40_Cylinder.002": "SLC-40",
+  "LC_29_Hangar_Cube.008": "HIF",
+  "Launch_Site_25_Cylinder": "SLC-37",
+  "Launch_Site_29_Cylinder.001": "SLC-41"
 }
 
 const assetIcons = {
-  "Falcon 9 Booster": "assets/falcon9booster.png",
-  "Atlas Booster": "assets/atlasbooster.png",
-  "Delta IV Heavy": "assets/deltaIVheavy.png",
-  "Falcon 9": "assets/falcon9.png",
-  "Falcon 9 PLF": "assets/falcon9PLF.png",
-  "Atlas PLF": "assets/atlasPLF.png"
+  "Falcon 9 Booster": "falcon9booster.png",
+  "Atlas Booster": "atlasbooster.png",
+  "Delta IV Heavy": "deltaIVheavy.png",
+  "Falcon 9": "falcon9.png",
+  "Falcon 9 PLF": "falcon9PLF.png",
+  "Atlas PLF": "atlasPLF.png",
+  "Vulcan": "vulcan.png",
+  "Delta Booster": "deltabooster.png",
+  "DCSS": "dcss.jpeg"
 }
 const props = defineProps({
   partId: String,
+  proxy: String
 });
 
 watch(
@@ -56,7 +56,7 @@ const weatherObjKeys = computed(() => {
     <div class="asset-grid">
       <div v-for="asset in assetData" :key="asset.id" class="asset">
         <div class="icon-wrapper">
-          <img :src="assetIcons[asset.type]" :alt="asset.type" class="asset-icon" />
+          <img :src="`${proxy}/images/${assetIcons[asset.type]}`" :alt="asset.type" class="asset-icon" />
         </div>
         <div class="asset-label">
           <p>{{ asset.label }}</p>
